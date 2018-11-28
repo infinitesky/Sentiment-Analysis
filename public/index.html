@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title> Test Project	</title>
+<style>
+div {
+    background-color: lightgrey;
+    width: auto;
+    border: 25px solid green;
+    padding: 25px;
+    margin: auto;
+}
+</style>
+</head>
+<body>
+	
+	<div>
+		<h2> Real-time AFINN-based sentiment analysis on streaming Twitter feed </h2> 
+		<p> Twitter Streaming feed is requested based on user-chosen keywords and then result is visualized by change in background color based on real time sentiment analysis on keyword. Average sentiment is calculated by total number of tweets processed in real time divided by sum of estimate of each tweet sentiment made from its text. </p>
+		<p> Technologies Used:</p>
+		<ul>
+			<li>NODEJS</li>
+			<li>ExpressJS</li>
+			<li>Twitter APIs</li>
+			<li>Socket.io</li>
+			<li>HTML</li>	
+		</ul>
+		<p>Please click to see <a href="\search.html">demo </a></p>	
+	</div>
+	<script>
+  		var socket = io.connect('http://localhost');
+  		socket.on('news', function (data) {
+  			document.getElemenetById("tweet").innerHTML = data.hello;
+    	console.log(data.hello);
+    	socket.emit('my other event', { my: 'data' });
+  	});
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title> TSA Project	</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" integrity="sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs=" crossorigin="anonymous"></script>
+</head>
+</head>
+<body>
+	<h2> Search </h2> 
+	<div>
+		<form  action="/search" method="get">
+			<input type="text" name="keyword"></input>
+			<button type="submit">Search!</button>
+		</form>
+		<div>Tweet: <p id="tweet"></div>
+		<div>Sentiment Score: <p id="score"></div>
+		<div>Total Tweets Processed: <p id="tweetCounts"></div>
+		<div>Average Sentiment: <p id="averageScore"></div>
+	</div>
+<!--	<script>
+    var source = new EventSource('/search');
+    source.onmessage = function(e) {
+      document.body.innerHTML += e + '<br>';
+    };
+  </script> -->
+  <script>
+  		var socket = io.connect('http://localhost');
+  		socket.on('news', function (data) {
+  			console.log(data.hello);
+  			document.getElementById("tweet").innerHTML = data.hello;
+  	});
+  		socket.on('score', function (data) {
+  			console.log(data.getscore);
+  			document.getElementById("score").innerHTML = data.getscore;
+    	
+  	});
+  		socket.on('tweetCounts', function (data) {
+  			console.log(data.tweetCounts);
+  			document.getElementById("tweetCounts").innerHTML = data.tweetCounts;
+  	});
+  		socket.on('averageScore', function (data) {
+  			console.log(data.averageScore);
+  			if (data.averageScore>0){
+  				 document.getElementById("averageScore").style.backgroundColor = "green";
+  			document.getElementById("averageScore").innerHTML = data.averageScore;}
+  			else{
+  				 document.getElementById("averageScore").style.backgroundColor = "red";
+  			document.getElementById("averageScore").innerHTML = data.averageScore;
+  			}
+
+  	});
+</script>
+</body>
+</html>
