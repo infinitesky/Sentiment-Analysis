@@ -11,4 +11,4 @@
 		</ul>
 		
 TODO:
-Keep http connection Alive while displaying result by setting header to "keep-alive" 
+Keep http connection Alive by setting header to "keep-alive" in order to prevent timeout when displaying result.
