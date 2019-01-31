@@ -9,3 +9,6 @@
 			<li>Socket.io</li>
 			<li>HTML</li>	
 		</ul>
+		
+TODO:
+Keep http connection Alive while displaying result by setting header to "keep-alive" 
